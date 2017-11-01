@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+	
+	//Image Selector
 	menu    = $("<div></div>");
 	background1 = $("<img name = 'background1.jpg' src ='background1.jpg' height=95px width=95px)><img>");
 	background2 = $("<img name = 'background2.jpg' src ='background2.jpg' height=95px width=95px)><img>");
@@ -14,9 +15,10 @@ $(document).ready(function(){
 	menu.append(background4);
 	menu.append(infoBar);
 
+	//Image Selector CSS/Style
 	menu.css({
-		"width": "220px",
-		"height": "220px",
+		"width": "250px",
+		"height": "250px",
 		"position": "absolute",
 		"top": "200px",
 		"left" : "1050px"
@@ -49,6 +51,7 @@ $(document).ready(function(){
 		"margin-bottom": "1.0px"
 	});
 
+	//Adds Image Selector to Body
 	$('body').append(menu);
 
 	occupiedLocations = [];
@@ -64,6 +67,7 @@ $(document).ready(function(){
 	});
 
 	
+	//Sort and Adjust Background Image
 	for(i=0;i<4;i++){
 			for (j=0;j<4;j++){
 				allLocations.push([i*100,j*100]);
@@ -93,6 +97,7 @@ $(document).ready(function(){
 		puzzlePieces[i].style.backgroundPosition = `${-100*(i%4)}px -300px`
 	}
 
+	//Movable Piece
 	$(".puzzlepiece").hover(
 		function(){
 			if(movablePiece(this)){
@@ -158,6 +163,7 @@ $(document).ready(function(){
 		changePuzzlePieceLocation(puzzlepiece, pieceLocation[0],pieceLocation[1]);
 	}
 
+
 	function adjacentLocations(location1, location2){
 		[left1,top1]  = location1;
 		[left2,top2]  = location2;
@@ -176,6 +182,7 @@ $(document).ready(function(){
 		}
 		return false;
 	}
+
 
 	function movablePiece(puzzlepiece){
 		return adjacentLocations(puzzlePieceLocation(puzzlepiece),locateEmptyTile())
